@@ -4,14 +4,16 @@ The content scraper is a Node.js command line app that scrapes data from an ecom
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-You will need to have Node.js and NPM installed. The best way is to install with homebrew - for instructions on how to install check out [this teamtreehouse blog post](http://blog.teamtreehouse.com/install-node-js-npm-mac). Once you have done that you will need to install the following npm packages.
+You will need to have Node.js and NPM installed. The best way is to install with homebrew - for instructions on how to install check out [this teamtreehouse blog post](http://blog.teamtreehouse.com/install-node-js-npm-mac). Once you have done that you will need to install the following npm packages:
+
+[Scrape it](https://github.com/IonicaBizau/scrape-it)
 
 ```
-npm install ...
+npm i --save scrape-it
 ```
 
 ### Installing
