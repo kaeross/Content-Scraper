@@ -4,7 +4,8 @@
   "description": "A content scraper to get data from eccommerce sites and store in a CSV file",
   "main": "scraper.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node scraper.js"
   },
   "author": "Kate Ross",
   "license": "ISC",
