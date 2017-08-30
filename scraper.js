@@ -3,7 +3,6 @@ Global variables and Required modules
 *************************************/
 
 //required modules
-const scrapeIt = require("scrape-it");
 const fs = require('fs');
 const json2csv = require('json2csv');
 const osmosis = require ('osmosis');
