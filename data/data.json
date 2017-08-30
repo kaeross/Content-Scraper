@@ -1,42 +1,50 @@
 [
     {
-        "Price": "$18",
-        "Title": "Logo Shirt, Green",
-        "ImageUrl": "img/shirts/shirt-104.jpg"
-    },
-    {
-        "Price": "$25",
-        "Title": "Mike the Frog Shirt, Yellow",
-        "ImageUrl": "img/shirts/shirt-105.jpg"
-    },
-    {
-        "Price": "$20",
         "Title": "Mike the Frog Shirt, Blue",
-        "ImageUrl": "img/shirts/shirt-103.jpg"
-    },
-    {
         "Price": "$20",
-        "Title": "Mike the Frog Shirt, Black",
-        "ImageUrl": "img/shirts/shirt-102.jpg"
+        "ImageURL": "img/shirts/shirt-103.jpg",
+        "URL": "http://www.shirts4mike.com/shirt.php?id=103"
     },
     {
-        "Price": "$18",
         "Title": "Logo Shirt, Red",
-        "ImageUrl": "img/shirts/shirt-101.jpg"
+        "Price": "$18",
+        "ImageURL": "img/shirts/shirt-101.jpg",
+        "URL": "http://www.shirts4mike.com/shirt.php?id=101"
     },
     {
+        "Title": "Mike the Frog Shirt, Black",
         "Price": "$20",
-        "Title": "Logo Shirt, Teal",
-        "ImageUrl": "img/shirts/shirt-107.jpg"
+        "ImageURL": "img/shirts/shirt-102.jpg",
+        "URL": "http://www.shirts4mike.com/shirt.php?id=102"
     },
     {
+        "Title": "Logo Shirt, Green",
+        "Price": "$18",
+        "ImageURL": "img/shirts/shirt-104.jpg",
+        "URL": "http://www.shirts4mike.com/shirt.php?id=104"
+    },
+    {
+        "Title": "Mike the Frog Shirt, Yellow",
         "Price": "$25",
-        "Title": "Mike the Frog Shirt, Orange",
-        "ImageUrl": "img/shirts/shirt-108.jpg"
+        "ImageURL": "img/shirts/shirt-105.jpg",
+        "URL": "http://www.shirts4mike.com/shirt.php?id=105"
     },
     {
-        "Price": "$20",
         "Title": "Logo Shirt, Gray",
-        "ImageUrl": "img/shirts/shirt-106.jpg"
+        "Price": "$20",
+        "ImageURL": "img/shirts/shirt-106.jpg",
+        "URL": "http://www.shirts4mike.com/shirt.php?id=106"
+    },
+    {
+        "Title": "Mike the Frog Shirt, Orange",
+        "Price": "$25",
+        "ImageURL": "img/shirts/shirt-108.jpg",
+        "URL": "http://www.shirts4mike.com/shirt.php?id=108"
+    },
+    {
+        "Title": "Logo Shirt, Teal",
+        "Price": "$20",
+        "ImageURL": "img/shirts/shirt-107.jpg",
+        "URL": "http://www.shirts4mike.com/shirt.php?id=107"
     }
 ]

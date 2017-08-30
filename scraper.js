@@ -12,11 +12,6 @@ const osmosis = require ('osmosis');
 const dataDir = "./data/";
 let savedData = [];
 
-//dom selection variables
-const price = '.shirt-details h1 span';
-const title = './/*[contains(concat(" ",normalize-space(@class)," ")," shirt-details ")]//h1/text()';
-const imageUrl = './/*[contains(concat(" ",normalize-space(@class)," ")," shirt-picture ")]//img/@src';
-
 
 /*************************************
 Functions
@@ -47,14 +42,11 @@ fs.stat(dataDir, (err, fd) => {
 osmosis
 .get("http://www.shirts4mike.com/shirts.php")
 .follow(".products a")
-// .find(price).set('Price')
-// .parse(price)
-//.find(title).parse(title).
-// .parse(title)
 .set({
-	'Price': price,
-	'Title': title,
-	'ImageUrl': imageUrl
+	'Title': 'title',
+	'Price': '.shirt-details h1 span',
+	'ImageURL': '.shirt-picture img@src',
+	'URL': '@url'
 })
 .log(console.log)
 .data(function(data) {
