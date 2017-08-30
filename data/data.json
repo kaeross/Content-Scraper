@@ -1,0 +1,42 @@
+[
+    {
+        "Price": "$18",
+        "Title": "Logo Shirt, Green",
+        "ImageUrl": "img/shirts/shirt-104.jpg"
+    },
+    {
+        "Price": "$25",
+        "Title": "Mike the Frog Shirt, Yellow",
+        "ImageUrl": "img/shirts/shirt-105.jpg"
+    },
+    {
+        "Price": "$20",
+        "Title": "Mike the Frog Shirt, Blue",
+        "ImageUrl": "img/shirts/shirt-103.jpg"
+    },
+    {
+        "Price": "$20",
+        "Title": "Mike the Frog Shirt, Black",
+        "ImageUrl": "img/shirts/shirt-102.jpg"
+    },
+    {
+        "Price": "$18",
+        "Title": "Logo Shirt, Red",
+        "ImageUrl": "img/shirts/shirt-101.jpg"
+    },
+    {
+        "Price": "$20",
+        "Title": "Logo Shirt, Teal",
+        "ImageUrl": "img/shirts/shirt-107.jpg"
+    },
+    {
+        "Price": "$25",
+        "Title": "Mike the Frog Shirt, Orange",
+        "ImageUrl": "img/shirts/shirt-108.jpg"
+    },
+    {
+        "Price": "$20",
+        "Title": "Logo Shirt, Gray",
+        "ImageUrl": "img/shirts/shirt-106.jpg"
+    }
+]

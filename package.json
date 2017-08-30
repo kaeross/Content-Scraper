@@ -10,6 +10,7 @@
   "author": "Kate Ross",
   "license": "ISC",
   "dependencies": {
-    "scrape-it": "^3.3.2"
+    "csv": "^1.1.1",
+    "osmosis": "^1.1.4"
   }
 }
