@@ -64,7 +64,7 @@ const makeDoubleDigit = (dateTimeElement) => {
 function getFormattedDate() {
 	const date = new Date;
 	const yyyy = date.getFullYear();
-	const month = date.getMonth();
+	const month = date.getMonth()+1;
 	const mm = makeDoubleDigit(month);
 	const day = date.getDay();
 	const dd = makeDoubleDigit(day);
