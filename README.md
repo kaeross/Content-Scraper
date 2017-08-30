@@ -14,7 +14,13 @@ You will need to have Node.js and NPM installed. The best way is to install with
 
 [json2csv](https://www.npmjs.com/package/json2csv)
 
-All you need to do is navigate to the directory in terminal or console and type
+All you need to do is navigate to the directory in terminal or console
+
+```
+cd {Path to directory}/Content-Scraper/
+```
+
+and type
 
 ```
 npm install
