@@ -5,10 +5,17 @@ Global variables and Required modules
 //required modules
 const scrapeIt = require("scrape-it");
 const fs = require('fs');
-const path = require('path');
+const csv = require('csv');
+const osmosis = require ('osmosis');
 
-//global variables
+//data variables
 const dataDir = "./data/";
+let savedData = [];
+
+//dom selection variables
+const price = '.shirt-details h1 span';
+const title = './/*[contains(concat(" ",normalize-space(@class)," ")," shirt-details ")]//h1/text()';
+const imageUrl = './/*[contains(concat(" ",normalize-space(@class)," ")," shirt-picture ")]//img/@src';
 
 
 /*************************************
@@ -21,7 +28,7 @@ function printError(error) {
 }
 
 //check for data folder - if not present create new data folder.
-fs.stat(dataDir, (err, fd) => {	
+fs.stat(dataDir, (err, fd) => {
 	if (err) {
 		if (err.code === 'ENOENT') {
 			console.log('You don\'t have a data directory yet, I\'ll just make you one now.');
@@ -33,23 +40,66 @@ fs.stat(dataDir, (err, fd) => {
 		} else { 
 			printError(err);
 		}
-	} else {
-		console.log('Oh aren\'t you organised. You already have a data folder!');
 	}
 });
 
-// Promise interface
-// scrapeIt("http://http://www.shirts4mike.com/shirts.php", {
-//     title: ".header h1"
-//   , desc: ".header h2"
-//   , avatar: {
-//         selector: ".header img"
-//       , attr: "src"
-//     }
-// }).then(page => {
-//     console.log(page);
+//use npm package osmosis to scrape data from shirts for mike
+osmosis
+.get("http://www.shirts4mike.com/shirts.php")
+.follow(".products a")
+// .find(price).set('Price')
+// .parse(price)
+//.find(title).parse(title).
+// .parse(title)
+.set({
+	'Price': price,
+	'Title': title,
+	'ImageUrl': imageUrl
+})
+.log(console.log)
+.data(function(data) {
+      console.log(data);
+      savedData.push(data);
+   })
+.error(console.error)
+
+ .done(function() {
+      fs.writeFile('./data/data.json', JSON.stringify( savedData, null, 4), function(err) {
+        if(err) console.error(err);
+        else console.log('Data Saved to data.json file');
+      })
+   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /** CSV parsing and generation */
+// csv.generate({seed: 1, columns: 5}, function(err, data){
+//   csv.parse(data, function(err, data){
+//     csv.transform(data, function(data){
+//       return data.map(function(value){return value.toUpperCase()});
+//     }, function(err, data){
+//       csv.stringify(data, function(err, data){
+//         process.stdout.write(data);
+//       });
+//     });
+//   });
 // });
-
-
 
 
