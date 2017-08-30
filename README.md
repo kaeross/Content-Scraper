@@ -11,6 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 You will need to have Node.js and NPM installed. The best way is to install with homebrew - for instructions on how to install check out [this teamtreehouse blog post](http://blog.teamtreehouse.com/install-node-js-npm-mac). Once you have done that running NPM install will install the following npm packages:
 
 [Osmosis](https://github.com/rchipka/node-osmosis)
+
 [json2csv](https://www.npmjs.com/package/json2csv)
 
 ```

@@ -48,7 +48,11 @@ function printError(error) {
 	writeErrorFile(error);
 }
 
-//Format date and time stamps
+/*******************************************************************
+		   Format date and time stamps
+*******************************************************************/
+
+
 const makeDoubleDigit = (dateTimeElement) => {
 		if (dateTimeElement < 10) {
 			dateTimeElement = `0${dateTimeElement}`;
@@ -111,7 +115,7 @@ osmosis
 	'ImageURL': '.shirt-picture img@src',
 	'URL': '@url'
 })
-.log(console.log)
+//.log(console.log)
 .data(function(data) {
 	//console.log(data);
 	savedData.push(data);
@@ -133,7 +137,7 @@ osmosis
 	var csv = json2csv({data: savedData, fields: fields});
 	fs.writeFile(`./data/${getFormattedDate()}.csv`, csv, function(err) {
 		if(err) printError(err);
-		else console.log('Data Saved to ${getFormattedDate}.csv file');	
+		else console.log(`Data Saved to ${getFormattedDate()}.csv file`);	
 	});
 });
 
