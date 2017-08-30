@@ -20,7 +20,7 @@ All you need to do is navigate to the directory in terminal or console
 cd {Path to directory}/Content-Scraper/
 ```
 
-and type
+then run
 
 ```
 npm install
