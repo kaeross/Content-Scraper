@@ -10,7 +10,7 @@
   "author": "Kate Ross",
   "license": "ISC",
   "dependencies": {
-    "csv": "^1.1.1",
+    "json2csv": "^3.11.1",
     "osmosis": "^1.1.4"
   }
 }

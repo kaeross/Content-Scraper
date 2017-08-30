@@ -8,22 +8,23 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You will need to have Node.js and NPM installed. The best way is to install with homebrew - for instructions on how to install check out [this teamtreehouse blog post](http://blog.teamtreehouse.com/install-node-js-npm-mac). Once you have done that you will need to install the following npm packages:
+You will need to have Node.js and NPM installed. The best way is to install with homebrew - for instructions on how to install check out [this teamtreehouse blog post](http://blog.teamtreehouse.com/install-node-js-npm-mac). Once you have done that running NPM install will install the following npm packages:
 
 [Osmosis](https://github.com/rchipka/node-osmosis)
+[json2csv](https://www.npmjs.com/package/json2csv)
 
 ```
-npm i --save osmosis
+npm install
 ```
 
-### Installing
+### How to run Content-Scraper
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
+To start the program, simply run:
 
 ```
-Give the example
+npm start
 ```
 
 And repeat

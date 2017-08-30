@@ -5,8 +5,9 @@ Global variables and Required modules
 //required modules
 const scrapeIt = require("scrape-it");
 const fs = require('fs');
-const csv = require('csv');
+const json2csv = require('json2csv');
 const osmosis = require ('osmosis');
+const util = require('util');
 
 //data variables
 const dataDir = "./data/";
@@ -19,8 +20,67 @@ Functions
 
 //print readable error messages
 function printError(error) {
-	console.error(`there has been an error:` + error.message);
+	console.error(`Whoops! Something went wrong: ${error.message}`);
+	//log error message with timestamp
+	
+	//create log file if doesn't exist or append error to file
+	function writeErrorFile(err) {
+		const logError = `${new Date} ${error.message} \n`;
+		//check for error log
+		fs.stat('scraper-error.log', (err, fd) => {
+			if (err) {
+				//if no log create log and write error
+				if (err.code === 'ENOENT') {
+					console.log('there is no file');
+					fs.writeFileSync('scraper-error.log', logError, (err) => {
+						console.log(' 1 Error has been logged in scraper-error.log');
+					});
+				}
+			} else {
+				//else append error to file
+				fs.appendFileSync('scraper-error.log', logError, (err) => {
+					if (err) throw err;
+					console.log(' 2 Error has been logged in scraper-error.log');
+				});
+			}
+		});
+	}	
+	writeErrorFile(error);
 }
+
+//Format date and time stamps
+const makeDoubleDigit = (dateTimeElement) => {
+		if (dateTimeElement < 10) {
+			dateTimeElement = `0${dateTimeElement}`;
+			return dateTimeElement;
+		} else {
+			return dateTimeElement;
+		}
+	}
+
+function getFormattedDate() {
+	const date = new Date;
+	const yyyy = date.getFullYear();
+	const month = date.getMonth();
+	const mm = makeDoubleDigit(month);
+	const day = date.getDay();
+	const dd = makeDoubleDigit(day);
+	return `${yyyy}-${mm}-${dd}`;
+}
+
+//Create date / time stamp 
+function getFormattedDateTime() {
+	const date = new Date;
+	const hours = date.getHours();
+	const hh = makeDoubleDigit(hours);
+	const mins = date.getMinutes();
+	const mm = makeDoubleDigit(mins);
+	const seconds = date.getSeconds();
+	const ss = makeDoubleDigit(seconds);
+	return `${getFormattedDate()} ${hh}:${mm}:${ss}`;
+}
+
+
 
 //check for data folder - if not present create new data folder.
 fs.stat(dataDir, (err, fd) => {
@@ -40,7 +100,10 @@ fs.stat(dataDir, (err, fd) => {
 
 //use npm package osmosis to scrape data from shirts for mike
 osmosis
-.get("http://www.shirts4mike.com/shirts.php")
+.get("http://www.shirts4mike.com/shirts.php").error(function(err) {
+	var errMessage = new Error("There’s been a 404 error. Cannot connect to the to http://shirts4mike.com.");
+	printError(errMessage);
+})
 .follow(".products a")
 .set({
 	'Title': 'title',
@@ -50,48 +113,30 @@ osmosis
 })
 .log(console.log)
 .data(function(data) {
-      console.log(data);
-      savedData.push(data);
-   })
-.error(console.error)
-
- .done(function() {
-      fs.writeFile('./data/data.json', JSON.stringify( savedData, null, 4), function(err) {
-        if(err) console.error(err);
-        else console.log('Data Saved to data.json file');
-      })
-   });
+	//console.log(data);
+	savedData.push(data);
+})
+.error(function(error) {
+	printError(error);
+})
+.debug(util.debuglog)
 
 
+//functions to run once data has been scraped
+.done(function() {
+	//loop through json object and add time stamp
+	for(let i = 0; i < savedData.length; i++) {
+		savedData[i].Time = getFormattedDateTime();
+	}
+	//convert json data to csv
+	var fields = ['Title','Price', 'ImageURL', 'URL', 'Time'];
+	var csv = json2csv({data: savedData, fields: fields});
+	fs.writeFile(`./data/${getFormattedDate()}.csv`, csv, function(err) {
+		if(err) printError(err);
+		else console.log('Data Saved to ${getFormattedDate}.csv file');	
+	});
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// /** CSV parsing and generation */
-// csv.generate({seed: 1, columns: 5}, function(err, data){
-//   csv.parse(data, function(err, data){
-//     csv.transform(data, function(data){
-//       return data.map(function(value){return value.toUpperCase()});
-//     }, function(err, data){
-//       csv.stringify(data, function(err, data){
-//         process.stdout.write(data);
-//       });
-//     });
-//   });
-// });
 
 
