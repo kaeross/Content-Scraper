@@ -25,7 +25,7 @@ function printError(error) {
 	
 	//create log file if doesn't exist or append error to file
 	function writeErrorFile(err) {
-		const logError = `${new Date} ${error.message} \n`;
+		const logError = `[${new Date}] ${error.message} \n`;
 		//check for error log
 		fs.stat('scraper-error.log', (err, fd) => {
 			if (err) {
@@ -40,7 +40,7 @@ function printError(error) {
 				//else append error to file
 				fs.appendFileSync('scraper-error.log', logError, (err) => {
 					if (err) throw err;
-					console.log(' 2 Error has been logged in scraper-error.log');
+					console.log('Error has been logged in scraper-error.log');
 				});
 			}
 		});
@@ -105,7 +105,7 @@ fs.stat(dataDir, (err, fd) => {
 //use npm package osmosis to scrape data from shirts for mike
 osmosis
 .get("http://www.shirts4mike.com/shirts.php").error(function(err) {
-	var errMessage = new Error("There’s been a 404 error. Cannot connect to the to http://shirts4mike.com.");
+	var errMessage = new Error("There’s been a 404 error. Cannot connect to http://shirts4mike.com.");
 	printError(errMessage);
 })
 .follow(".products a")
