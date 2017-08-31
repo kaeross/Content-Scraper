@@ -6,7 +6,6 @@ Global variables and Required modules
 const fs = require('fs');
 const json2csv = require('json2csv');
 const osmosis = require ('osmosis');
-const util = require('util');
 
 //data variables
 const dataDir = "./data/";
@@ -122,7 +121,6 @@ osmosis
 .error(function(error) {
 	printError(error);
 })
-.debug(util.debuglog)
 
 
 //functions to run once data has been scraped
